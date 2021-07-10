@@ -1,7 +1,9 @@
+import 'package:equatable/equatable.dart';
+
 import 'languages.g.dart';
 export 'languages.g.dart';
 
-class Language {
+class Language extends Equatable {
   Language(this.isoCode, this.name);
 
   final String name;
@@ -15,9 +17,6 @@ class Language {
   factory Language.fromIsoCode(String isoCode) =>
       Languages.defaultLanguages.firstWhere((l) => l.isoCode == isoCode);
 
-  bool operator ==(o) =>
-      o is Language && name == o.name && isoCode == o.isoCode;
-
   @override
-  int get hashCode => super.hashCode;
+  List<Object?> get props => [name, isoCode];
 }
